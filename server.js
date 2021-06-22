@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
-    connectionString : process.env.DATABASE_URL,
-    ssl: true
+    connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
   }
 });
 
