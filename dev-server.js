@@ -11,7 +11,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(helmet());
 app.use(cors());
 app.use(compression());
 
