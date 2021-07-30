@@ -1,7 +1,7 @@
 const handleSignin = (req,res,knex,bcrypt,CryptoJS,generatetoken) => {
 	let {email, password} = req.body;
 	if(email && password){
-	var bytes  = CryptoJS.AES.decrypt(password, process.env.ACCESS_TOKEN_SECRET);
+	var bytes  = CryptoJS.AES.decrypt(password, "secret key 123");
 	password = bytes.toString(CryptoJS.enc.Utf8);
 	knex.select('email','hash').from('login').where({email})
 		.then(data => {
