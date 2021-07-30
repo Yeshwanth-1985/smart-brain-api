@@ -8,7 +8,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10
