@@ -3,12 +3,16 @@ const app = express();
 const cors = require('cors');
 var CryptoJS = require("crypto-js");
 const jwt = require('jsonwebtoken');
+const helmet = require("helmet");
+const compression = require('compression');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
+app.use(compression());
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10
