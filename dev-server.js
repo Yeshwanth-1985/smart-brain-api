@@ -8,7 +8,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10
@@ -76,7 +76,7 @@ function Auth (req,res,next) {
   if(token == null)
     res.status(400).json("invalid token")
 
-   jwt.verify(token, ACCESS_TOKEN_SECRET, (err, result) => {
+   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, result) => {
     if(err)
       res.status(400).json("invalid token");
     if(result.id) {
