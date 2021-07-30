@@ -1,7 +1,7 @@
  const handleRegister = (req,res,knex,bcrypt,CryptoJS,generatetoken) => {
 	let {email, username, password} = req.body;
 	if(email && username && password){
-	var bytes  = CryptoJS.AES.decrypt(password, 'secret key 123');
+	var bytes  = CryptoJS.AES.decrypt(password, process.env.ACCESS_TOKEN_SECRET);
 	password = bytes.toString(CryptoJS.enc.Utf8);
 	
 	password = bcrypt.hashSync(password, 10);
