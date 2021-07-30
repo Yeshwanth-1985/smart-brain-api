@@ -4,6 +4,9 @@
 node_modules/
 /.pnp
 .pnp.js
+sidecode.js
+tempredis.js
+server.js
 
 # testing
 /coverage
