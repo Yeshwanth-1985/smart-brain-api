@@ -34,6 +34,8 @@ const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
 const signout = require('./controllers/signout.js');
 const changepass = require('./controllers/changepass.js');
+const forgot = require('./controllers/forgot.js');
+
 
 app.get('/', (req,res) => {
 	res.send("welcome all");
@@ -54,6 +56,10 @@ app.post('/imageurl',Auth,(req,res) => {image.handleApiCall(req,res)});
 app.post('/changepass',Auth,(req,res) => {changepass.updatePassword(req,res,knex,bcrypt,CryptoJS)});
 
 app.post('/signout',Auth,(req,res) => {signout.handleSignout(req,res)});
+
+app.post('/forgot',(req,res) => {forgot.handleForgot(req,res,knex)});
+
+app.post('/reset',(req,res) => {forgot.handleReset(req,res,knex,bcrypt,CryptoJS,generatetoken)});
 
 app.post('/refresh',Auth,(req,res) => {
   knex.select('*').from('users').where({email: req.user.email}).then(
